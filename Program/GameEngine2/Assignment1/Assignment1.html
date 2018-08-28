@@ -9,7 +9,7 @@
 		<title>Portfolio of Yuxian Deng</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
 	</head>
 	<body class="subpage">
 
@@ -58,8 +58,8 @@
 						<div class="content">
 							<a href="https://drive.google.com/open?id=1-wouCPhG4Cg7ILr3ugaK3xj40YSwT_oO" class="button special">Download</a>
 							<h3>Requirements</h3>
-							<p>https://utah.instructure.com/courses/512907/pages/assignment-01<br>
-This is the solution setup for our game engine. In order to understand how to a large program and build the architecture, we practiced the things below:<br>
+							<a href="https://utah.instructure.com/courses/512907/pages/assignment-01">https://utah.instructure.com/courses/512907/pages/assignment-01</a>
+							<p>This is the solution setup for our game engine. In order to understand how to a large program and build the architecture, we practiced the things below:<br>
 1.	Add new project to a solution<br>
 2.	Manage project property by property sheet<br>
 3.	Figure out dependencies of each project and add static libraries (dependencies) and external libraries.<br>
@@ -67,18 +67,17 @@ This is the solution setup for our game engine. In order to understand how to a 
 5.	Learned how to use Visual Studio to manage project in all means.<br>
 I just followed all the instructions JP gave to us one by one to set up my solution. I got a link error which told me I can’t find d3d lib or opengl lib, later I figured out that I forgot to force include win.h files in the new Graphics project I added.<br>
 I changed the title and icon enum in cMyGame.h. As for custom shader, I used sin(simulationTime) and cos(simulationTime) to calculate the color of my triangle and normalize them to (0,1).
-</p><br>
+</p>
 
 							<h3>Controls</h3>
-							<p>Press and hold SPACE to make the color change slowly. Release SPACE to return to normal speed.</p><br>
-							<h3>Screen Shot</h3>
+							<p>Press and hold SPACE to make the color change slowly. Release SPACE to return to normal speed.</p>
 
 							<h3>Reference</h3>
 							<p>Project Application is needed to add a reference to Graphics.<br>
-Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference to Graphics. Because they are all enumerations other than functions defined in a CPP file.</p><br>
+Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference to Graphics. Because they are all enumerations other than functions defined in a CPP file.</p>
 
 							<h3>Class expectations</h3>
-							<p>I like graphics and I’ve learned some basic theory of graphics before. I feel it’s too hard to research new theory in graphics but it’s still cool to build our own game engine and rendering system by mature technology. I’d like to the more about graphics and real-time rendering in games.</p><br>
+							<p>I like graphics and I’ve learned some basic theory of graphics before. I feel it’s too hard to research new theory in graphics but it’s still cool to build our own game engine and rendering system by mature technology. I’d like to the more about graphics and real-time rendering in games.</p>
 							<h3>Screen Shot</h3>
 
 							<h3>Optional</h3>
@@ -86,11 +85,11 @@ Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference
 2.	The function UserInput::IsKeyPressed take a keycode (enumeration) and return if it’s pressed. <br>
 There’s a member variable in cbApplication named m_simulationRate, which is used to calculate simulation time in cbApplication::UpdateUntilExit. Then the value is submit to engine. We only need to use the function SetSimulationRate and pass a number in [0, 1) to make it slower.<br>
 Combine those above, we can detect key press in cMyGame::UpdateBasedOnInput and change simulation rate. 
-</p><br>
+</p>
 
 							<h3>Screen Shot</h3>
 
-							<div class="align-center">
+							<div class="6u 12u$(small)">
 								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment1/screenshot.png"><img src="../../../images/Program/GameEngine2/Assignment1/screenshot.png" alt="" /></a></span>
 							</div>
 							<br>

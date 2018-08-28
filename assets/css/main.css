@@ -1658,6 +1658,7 @@
 
 	p {
 		margin: 0 0 2rem 0;
+		color : #111;
 	}
 
 		p.special {
@@ -2577,7 +2578,7 @@
 	}
 
 	header p {
-		color: #bbb;
+		color: #444;
 	}
 
 /* Table */
