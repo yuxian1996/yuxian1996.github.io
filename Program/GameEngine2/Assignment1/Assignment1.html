@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Assignment1</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<a href="https://drive.google.com/open?id=1-wouCPhG4Cg7ILr3ugaK3xj40YSwT_oO" class="button special">Download</a>
+							<h3>Requirements</h3>
+							<p>https://utah.instructure.com/courses/512907/pages/assignment-01<br>
+This is the solution setup for our game engine. In order to understand how to a large program and build the architecture, we practiced the things below:<br>
+1.	Add new project to a solution<br>
+2.	Manage project property by property sheet<br>
+3.	Figure out dependencies of each project and add static libraries (dependencies) and external libraries.<br>
+4.	Learned platform-independent interfaces by using platform-specific code underlying.<br>
+5.	Learned how to use Visual Studio to manage project in all means.<br>
+I just followed all the instructions JP gave to us one by one to set up my solution. I got a link error which told me I can’t find d3d lib or opengl lib, later I figured out that I forgot to force include win.h files in the new Graphics project I added.<br>
+I changed the title and icon enum in cMyGame.h. As for custom shader, I used sin(simulationTime) and cos(simulationTime) to calculate the color of my triangle and normalize them to (0,1).
+</p><br>
+
+							<h3>Controls</h3>
+							<p>Press and hold SPACE to make the color change slowly. Release SPACE to return to normal speed.</p><br>
+							<h3>Screen Shot</h3>
+
+							<h3>Reference</h3>
+							<p>Project Application is needed to add a reference to Graphics.<br>
+Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference to Graphics. Because they are all enumerations other than functions defined in a CPP file.</p><br>
+
+							<h3>Class expectations</h3>
+							<p>I like graphics and I’ve learned some basic theory of graphics before. I feel it’s too hard to research new theory in graphics but it’s still cool to build our own game engine and rendering system by mature technology. I’d like to the more about graphics and real-time rendering in games.</p><br>
+							<h3>Screen Shot</h3>
+
+							<h3>Optional</h3>
+							<p>1.	There’s a file named “shaders.inc” which should be included by all shaders. We only need to add code which declares constant buffers to this header file. (I tested it but I don’t add it to the final commit because I don’t think it will be included in all shaders in the future.)<br>
+2.	The function UserInput::IsKeyPressed take a keycode (enumeration) and return if it’s pressed. <br>
+There’s a member variable in cbApplication named m_simulationRate, which is used to calculate simulation time in cbApplication::UpdateUntilExit. Then the value is submit to engine. We only need to use the function SetSimulationRate and pass a number in [0, 1) to make it slower.<br>
+Combine those above, we can detect key press in cMyGame::UpdateBasedOnInput and change simulation rate. 
+</p><br>
+
+							<h3>Screen Shot</h3>
+
+							<div class="align-center">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment1/screenshot.png"><img src="../../../images/Program/GameEngine2/Assignment1/screenshot.png" alt="" /></a></span>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
