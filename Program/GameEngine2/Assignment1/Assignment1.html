@@ -57,7 +57,7 @@
 					<div class="box">
 						<div class="content">
 							<a href="MyGame.zip" class="button special">Download</a>
-							<h3>Requirements</h3>
+							<h3><b>Requirements</b></h3>
 							<a href="https://utah.instructure.com/courses/512907/pages/assignment-01">https://utah.instructure.com/courses/512907/pages/assignment-01</a>
 							<p>This is the solution setup for our game engine. In order to understand how to a large program and build the architecture, we practiced the things below:
 							</p>
@@ -68,20 +68,20 @@
 									<li>Learned platform-independent interfaces by using platform-specific code underlying.</li>
 									<li>Learned how to use Visual Studio to manage project in all means.</li>
 								</ol>
-								<p>I just followed all the instructions JP gave to us one by one to set up my solution. I got a link error which told me I can’t find d3d lib or opengl lib, later I figured out that I forgot to force include win.h files in the new Graphics project I added.<br>
+								<p>I followed all the instructions JP gave to us one by one to set up my solution. I got a link error which told me I can’t find d3d lib or opengl lib, later I figured out that I forgot to force include win.h files in the new Graphics project I added.<br>
 								I changed the title and icon enum in cMyGame.h. As for custom shader, I used sin(simulationTime) and cos(simulationTime) to calculate the color of my triangle and normalize them to (0,1).</p>
 
-							<h3>Controls</h3>
+							<h3><b>Controls</b></h3>
 							<p>Press and hold SPACE to make the color change slowly. Release SPACE to return to normal speed.</p>
 
-							<h3>Reference</h3>
+							<h3><b>Reference</b></h3>
 							<p>Project Application is needed to add a reference to Graphics.<br>
 Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference to Graphics. Because they are all enumerations other than functions defined in a CPP file.</p>
 
-							<h3>Class expectations</h3>
+							<h3><b>Class expectations</b></h3>
 							<p>I like graphics and I’ve learned some basic theory of graphics before. I feel it’s too hard to research new theory in graphics but it’s still cool to build our own game engine and rendering system by mature technology. I’d like to the more about graphics and real-time rendering in games.</p>
 
-							<h3>Optional</h3>
+							<h3><b>Optional Challenge</b></h3>
 								<ol>
 									<li>There’s a file named “shaders.inc” which should be included by all shaders. We only need to add code which declares constant buffers to this header file. (I tested it but I don’t add it to the final commit because I don’t think it will be included in all shaders in the future.)</li>
 									<li>The function UserInput::IsKeyPressed take a keycode (enumeration) and return if it’s pressed.
@@ -90,7 +90,7 @@ Project ShaderBuilder mentioned Graphics namespace but didn’t need a reference
 									 </li>
 								</ol>
 
-							<h3>Screen Shot</h3>
+							<h3><b>Screen Shot</b></h3>
 
 							<div class="6u 12u$(small)">
 								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment1/screenshot.png"><img src="../../../images/Program/GameEngine2/Assignment1/screenshot.png" alt="" /></a></span>
