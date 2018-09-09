@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Assignment1</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content" class="container">
+							<a href="MyGame.zip" class="button special">Download</a>
+							<br>
+							<br>
+							<h3><b>Content</b></h3>
+							<p>In this assignment, we are required to make Graphics system completely platform-independent and make mesh and effect be initialized by specific data. 
+							</p>
+							<p>I decided to add another namespace named PlatformSpecific to deal with platform specific functions and variables. The main differences of two platform are initialization, cleanup, clear color, clear depth, and swap back buffer to front buffer. 
+							<br>
+							The declarations of these interfaces are located in PlatformSpecific.h, the implementations of these interface are located in PlatformSpecific.gl.cpp and PlatformSpecific.d3d.cpp separately. The interfaces I created for PlatformSpecific are listed below:</p>
+								<ol>
+									<li>
+										<code>
+											Result Initialize(const Graphics::sInitializationParameters& i_initializationParameters);
+										</code>
+										<br>
+										This interface takes a parameter because we need it to initialize something in D3D.
+									</li>
+									<br>
+									<li>
+										<code>
+											cResult CleanUp();
+										</code>
+									</li>
+									<br>
+									<li>
+										<code>
+											void ClearColor(const float r, const float g, const float b, const float a = 1.0f);
+										</code>
+										<br>
+										This interface takes r, g, b, a as back color.
+									</li>
+									<br>
+									<li>
+										<code>
+											void ClearDepth(const float iDepth = 1.0f);
+										</code>
+										<br>
+										This interface takes a depth value to be set as cleared depth.
+									</li>
+									<br>
+									<li>
+										<code>
+											void Swap();
+										</code>
+									</li>
+								</ol>
+								<hr>
+							<p><b>Graphics uses the statement below to clear back buffer color.</b>
+								<br>
+								<code>
+									PlatformSpecific::ClearColor(sin(simulationTime), cos(simulationTime), cos(simulationTime));
+								</code>
+							</p>
+								<hr>
+							<p><b>Graphics uses the statement below to initialize an effect. </b>The initialization of effect takes the path of vertex shader and fragment shader to create a new effect.
+								<br>
+								<code>
+									s_effect1.Initialize("data/Shaders/Vertex/standard.shader","data/Shaders/Fragment/LoopColor.shader");
+								</code>
+							</p>
+
+								<div class="table-wrapper">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>Size(byte)</th>
+												<th>cMesh</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>OpenGL</td>
+												<td>16</td>
+												<td>3 GLuint(4 bytes each)</td>
+												<td>1 uint16_t(2 byte)</td>
+												<td>2 bytes for alignment</td>
+											</tr>
+											<tr>
+												<td>D3D</td>
+												<td>32</td>
+												<td>3 Pointer( 8 bytes each)</td>
+												<td>1 uint16_t(2 bytes)</td>
+												<td>6 bytes for alignment</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<hr>
+							<p><b>Graphics uses the statement below to initialize an mesh. </b>The initialization of mesh takes a vector of vertex data and a vector of index data. The type of mesh1 is std::vector&lt;VertexFormats::sMesh&gt;, the type of indices1 is std::vector&lt;uint16_t&gt;.
+								<br>
+								<code>
+									s_mesh1.Initialize(mesh1, indices1);
+								</code>
+							</p>
+
+								<div class="table-wrapper">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>Size(byte)</th>
+												<th>cMesh</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>OpenGL</td>
+												<td>16</td>
+												<td>1 GLuint(4 bytes)</td>
+												<td>2 Handle(4 bytes each)</td>
+												<td>1 RenderState(1 byte</td>
+												<td>3 bytes for alignment</td>
+											</tr>
+											<tr>
+												<td>D3D</td>
+												<td>40</td>
+												<td>2 Handle(4 bytes each)</td>
+												<td>1 RenderState(32 bytes)</td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<hr>
+								<p>
+									Yet I didn’t find a way to make my cMesh and cEffect even smaller. In future assignment we might have to store more data into our mesh and effect class, I guess we could list them from top to bottom as larger data to smaller data to decrease the memory for alignment.
+								</p>
+
+							<h3><b>Controls</b></h3>
+							<p>Press and hold SPACE to make color animation slow. Release to return to normal speed.</p>
+
+							<h3><b>Screen Shot</b></h3>
+							<p>
+								This is screen shot of my running game. There’s a big triangle in the top, which is combined by two smaller triangles. The color of this triangle is animated. There’s a small triangle in the left bottom which is constantly white. The background color is animated by time.
+							</p>
+							<div class = "row"> 
+								<div class = "6u">
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment3/1.png"><img src="../../../images/Program/GameEngine2/Assignment3/1.png" alt="" /></a></span>
+								</div>
+								<div class = "6u">
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment3/5.gif"><img src="../../../images/Program/GameEngine2/Assignment3/5.gif" alt="" /></a></span>
+								</div>
+							</div>
+							<br>								
+								<span class="image fit">
+									<div style="color:black">
+										The background color of this frame is light blue.
+									</div>
+									<a href="../../../images/Program/GameEngine2/Assignment3/2.png"><img src="../../../images/Program/GameEngine2/Assignment3/2.png" alt="" /></a></span>
+								<br>
+								<span class="image fit">
+									<div style="color:black">
+										This screen shot shows the frame of the big triangle.
+									</div>
+									<a href="../../../images/Program/GameEngine2/Assignment2/3.png"><img src="../../../images/Program/GameEngine2/Assignment2/3.png" alt="" /></a></span>
+								<br>
+								<span class="image fit">
+									<div style="color:black">
+										This screen shot shows the frame of the small triangle.
+									</div>
+									<a href="../../../images/Program/GameEngine2/Assignment2/4.png"><img src="../../../images/Program/GameEngine2/Assignment2/4.png" alt="" /></a></span>
+								<br>
+
+							<h3><b>Thoughts</b></h3>
+								<p>Mesh doesn’t need to store vertex data and index data because OpenGL and D3D will copy the data when we pass it. It will save a lot of memory.</p>
+							<br>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
