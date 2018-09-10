@@ -56,7 +56,7 @@
 			<section id="One" class="wrapper style3">
 				<div class="inner">
 					<header class="align-center">
-						<h2> Game Engine2 - Assignment1</h2>
+						<h2> Game Engine2 - Assignment3</h2>
 					</header>
 				</div>
 			</section>
@@ -132,41 +132,7 @@
 										<thead>
 											<tr>
 												<th>Size(byte)</th>
-												<th>cMesh</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>OpenGL</td>
-												<td>16</td>
-												<td>3 GLuint(4 bytes each)</td>
-												<td>1 uint16_t(2 byte)</td>
-												<td>2 bytes for alignment</td>
-											</tr>
-											<tr>
-												<td>D3D</td>
-												<td>32</td>
-												<td>3 Pointer( 8 bytes each)</td>
-												<td>1 uint16_t(2 bytes)</td>
-												<td>6 bytes for alignment</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<hr>
-							<p><b>Graphics uses the statement below to initialize an mesh. </b>The initialization of mesh takes a vector of vertex data and a vector of index data. The type of mesh1 is std::vector&lt;VertexFormats::sMesh&gt;, the type of indices1 is std::vector&lt;uint16_t&gt;.
-								<br>
-								<code>
-									s_mesh1.Initialize(mesh1, indices1);
-								</code>
-							</p>
-
-								<div class="table-wrapper">
-									<table class="alt">
-										<thead>
-											<tr>
-												<th>Size(byte)</th>
-												<th>cMesh</th>
+												<th>cEffect</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -187,6 +153,42 @@
 												<td></td>
 											</tr>
 										</tbody>
+
+									</table>
+								</div>
+								<hr>
+							<p><b>Graphics uses the statement below to initialize an mesh. </b>The initialization of mesh takes a vector of vertex data and a vector of index data. The type of mesh1 is std::vector&lt;VertexFormats::sMesh&gt;, the type of indices1 is std::vector&lt;uint16_t&gt;.
+								<br>
+								<code>
+									s_mesh1.Initialize(mesh1, indices1);
+								</code>
+							</p>
+
+								<div class="table-wrapper">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>Size(byte)</th>
+												<th>cMesh</th>
+											</tr>
+										<tbody>
+											<tr>
+												<td>OpenGL</td>
+												<td>16</td>
+												<td>3 GLuint(4 bytes each)</td>
+												<td>1 uint16_t(2 byte)</td>
+												<td>2 bytes for alignment</td>
+											</tr>
+											<tr>
+												<td>D3D</td>
+												<td>32</td>
+												<td>3 Pointer( 8 bytes each)</td>
+												<td>1 uint16_t(2 bytes)</td>
+												<td>6 bytes for alignment</td>
+											</tr>
+										</tbody>
+
+										</thead>
 									</table>
 								</div>
 								<hr>
