@@ -1665,6 +1665,10 @@
 		color: indianred;
 	}
 
+	ul{
+		color: indianred;
+	}
+
 		p.special {
 			text-transform: uppercase;
 			font-size: .75rem;
@@ -2608,7 +2612,7 @@
 		}
 
 		table th {
-			font-size: 0.9rem;
+			font-size: 0.8rem;
 			font-weight: 700;
 			padding: 0 0.75rem 0.75rem 0.75rem;
 			text-align: left;
