@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Assignment5</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content" class="container">
+							<a href="MyGame.zip" class="button special">Download</a>
+							<br>
+							<br>
+							<h3><b>Content</b></h3>
+							<p>In this assignment, we need to create the representation of camera and game object, and the way to submit them to graphics and move objects using keyboard. In my project, I created a base class named <b>cGameObject</b>, and two derived class <b>cCamera</b> and <b>cRenderableObject</b>.  
+							</p>
+							<h4><b>Structure</b></h4>
+							<div class = "2u">
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/1.png"><img src="../../../images/Program/GameEngine2/Assignment5/1.png" alt="" /></a></span>
+							</div>
+							<hr>
+
+							<h4><b>cGameObject</b></h4>
+							<p><b>cGameObject</b> has two member variables: <b>sRigidBodyState</b> and transform matrix. <b>sRigidBodyState</b> stores the physical information for Game to use, matrix stores the transform for graphics. The class has two virtual functions for now: <i>Update</i> and <i>Submit</i>, which updates <b>sRigidBodyState</b> and submit mMatrix and allows derived class to define its own implementation. This is used for game objects which only need a <b>sRigidBodyState</b> and transformation, such as trigger.
+							<div class = "8u">
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/2.png"><img src="../../../images/Program/GameEngine2/Assignment5/2.png" alt="" /></a></span>
+							</div></p>
+							<hr>
+
+							<h4><b>cCamera</b></h4>
+							<p><b>cCamera</b> has two functions to calculate matrix for rendering, and overrides the submit function to submit its own data (two matrices) to graphics.
+							<div class = "8u">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/3.png"><img src="../../../images/Program/GameEngine2/Assignment5/3.png" alt="" /></a></span>
+							</div></p>
+							<hr>
+
+							<h4><b>cRenderableObject</b></h4>
+							<p><b>cRenderableObject</b> provides another function to set its mesh and effect besides its constructor. Every time a new mesh or effect is set, it increments the reference count of new mesh/effect to keep the mesh/effect valid, and decrements the reference count of old mesh/effect to make the mesh/effect can be released. When object is released, the reference count is decremented.  (Copy constructor, copy assignment, move constructor, move assignment should be deleted here in order to keep the correct reference count).							<div class = "8u">
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/4.png"><img src="../../../images/Program/GameEngine2/Assignment5/4.png" alt="" /></a></span>
+								</div></p>
+								<hr>
+
+							<h4><b>Submit game object</b></h4>
+							<p>This takes a pointer of <b>cGameObject</b> and the time for predict the position of this game object. Inside the function, a simple call to <i>ipGameObject->Submit</i> is enough. Each <b>cGameObject</b> class could has its own submit function.
+								<div class = "10u">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/5.png"><img src="../../../images/Program/GameEngine2/Assignment5/5.png" alt="" /></a></span>
+								</div></p>
+
+								<hr>
+							<h4><b>Size of data for each draw call</b></h4>
+							<p>In order to draw a mesh, graphics need a pointer to a mesh, a pointer to an effect, a matrix. The total size is 72 bytes (4+4+64) on <b>x84</b>, 80 bytes (8+8+64) on <b>x64</b>.</p>
+
+								<hr>
+							<h4><b>Necessity of extrapolation</b></h4>
+							<p><i>UpdateSimulationBasedOnTime</i> is called based on the frame rate we set in our game. If the frame rate is 15, the function will only be called 15 times per second. This is where we update our game object in game loop. But <i>SubmitDataToBeRendered</i> and <i>RenderFrame</i> on rendering thread are called as soon as possible, which is more frequently than <i>UpdateSimulationBasedOnTime</i>. If we don’t use extrapolation, the moving object will move only when <i>UpdateSimulationBasedOnTime</i> is called, and stay at the same position when the sequent several <i>SubmitDataToBeRendered</i> are called. It could case “jerky” movement. That’s why we need to predict the position an object would be at when it is submitting to graphics.</p>
+							<hr>
+							<h4><b>binding 2 / register b2</b></h4>
+							<p>In <b>sContantBuffer</b> Bind function, it needs a binding point to bind the correct buffer. We pass the m_type to the function, and m_type is <b>enum ConstantBufferTypes</b>, which PerFrame = 0, PerMaterial = 1, PerDrawCall = 2.  So binding 2 is binding to constant buffer per draw call, binding 0 is binding to constant buffer per frame.
+								<div class = "6u">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/6.png"><img src="../../../images/Program/GameEngine2/Assignment5/6.png" alt="" /></a></span>
+								</div></p>
+
+							<hr>
+							<h3><b>Controls</b></h3>
+							<p>Press <b>W/A/S/D</b> to move the rectangle. Hold Control and press <b>W/A/S/D</b> to move the triangle. Press <b>Up/Down/Left/Right Arrow</b> to move camera.
+
+							<h3><b>Screen Shot</b></h3>
+							<div class = "row"> 
+								<div class = "6u">
+									<div style="color:black">
+										Default position
+									</div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/7.png"><img src="../../../images/Program/GameEngine2/Assignment5/7.png" alt="" /></a></span>
+								</div>
+								
+								<div class = "6u">
+									<div style="color:black">
+											Move the triangle behind left
+									 </div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment5/8.png"><img src="../../../images/Program/GameEngine2/Assignment5/8.png" alt="" /></a></span>
+								</div>
+							</div>
+
+							<br>	
+							<div class = "row"> 		
+							<div class = "6u">					
+								<span class="image fit">
+									<div style="color:black">
+										Move the rectangle down
+									</div>
+									<a href="../../../images/Program/GameEngine2/Assignment5/9.png"><img src="../../../images/Program/GameEngine2/Assignment5/9.png" alt="" /></a></span>
+								</div>
+								<div class = "6u">
+								<span class="image fit">
+									<div style="color:black">
+											Move camera forward
+									</div>
+									<a href="../../../images/Program/GameEngine2/Assignment5/10.png"><img src="../../../images/Program/GameEngine2/Assignment5/10.png" alt="" /></a></span>
+								</div>
+								<br>
+							</div>
+
+							<h3><b>Discussion </b></h3>
+								<p>The system of game object could be placed in another project because it’s not directly related to Graphics project. All it needs are meshes, effects, transformation which. Game object could submit the data to graphics and store some other staff related to gameplay or some other systems.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
