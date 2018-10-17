@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Assignment7</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content" class="container">
+							<a href="MyGame.zip" class="button special">Download</a>
+							<br>
+							<br>
+							<h3><b>Content</b></h3>
+							<p>During this assignment, I created a maya plug-in to export the objects modeled in maya into a human-readable file format which I designed.
+							</p>
+							<h4><b>Reference</b></h4>
+							<p>I didn’t add any reference to MayaMeshExporter project. I think there’s no other project depended on MayaMeshExporter because the each project be built without it as long as we have the human-readable files which could be done by text editor.</p>
+
+							<h4><b>Human-readable file</b></h4>
+							<p>I exported the unused data to my human-readable file because we might use some data later and the way I wrote it wouldn’t influence what I have now. </p>
+							<pre><code class = "6u 12u$(medium)">
+VertexArray = 
+{
+	{
+		Position = { 0, 0, -2.15111},
+		Color = { 1, 1, 1, 1},
+		Normal = { 0.187593, 0.57735, -0.794654},
+		Tangent = { -0.958589, -0.068882, -0.276338},
+		Bitangent = { -0.214281, 0.813586, 0.54052},
+		TexCoord = { 1, 0.5},	
+	},
+	...
+	...
+},
+
+							</code></pre>
+
+							<h4><b>Handle meshes with too many vertices</b></h4>
+							<p>Since I used uint16_t to store the size of index array, if we’d like to draw a mesh with an index array larger than 2^16, it won’t render correctly.  If the count is too large for my program, I’ll assert it and out the message and path of mesh file out to my logging. If we’re developing game, we’ll know what happened and where did it happen and if we’re playing game, it won’t render this mesh and won’t break the game.</p>
+
+							<h3><b>Controls</b></h3>
+							<p>Press <b>W/A/S/D</b> to move the polyhedron. Hold Control and press <b>W/A/S/D</b> to move the plane. Press <b>Up/Down/Left/Right Arrow</b> to move camera.
+
+							<h3><b>Screen Shot</b></h3>
+							<div class = "row"> 
+								<div class = "6u">
+									<div style="color:black">
+										Three colorful meshes
+									</div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment7/1.png"><img src="../../../images/Program/GameEngine2/Assignment7/1.png" alt="" /></a></span>
+								</div>
+								<div class = "12u">
+									<div style="color:black">
+										Debugging maya plug-in
+									</div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment7/2.png"><img src="../../../images/Program/GameEngine2/Assignment7/2.png" alt="" /></a></span>
+								</div>
+							</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
