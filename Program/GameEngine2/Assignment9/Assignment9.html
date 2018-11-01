@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+		.box.medium
+		{
+			margin-left: 10%;
+			margin-right: 10%
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Assignment9</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box medium">
+						<div class="content" class="container">
+							<a href="MyGame.zip" class="button special">Download</a>
+							<br>
+							<br>
+							<h3><b>Content</b></h3>
+							<p>During this assignment, I created human-readable file format for developer to add effect quickly, an effect builder to build the human-readable file into binary file, then read the binary file to our game.
+							</p>
+							<h4><b>Human-readable file</b></h4>
+							<p>In the human-readable file, I kept the path of shaders and three Booleans to construct <i>RenderState</i>.</p>
+							<pre class = "8u 12u$(medium)">
+								<code>
+return
+{
+	VertexShader = "Shaders/Vertex/standard.shader",
+	FragmentShader = "Shaders/Fragment/standard.shader",
+	EnableAlphaTransparency = false,
+	EnableDepthBuffering = true,
+	EnableDrawBothTriangleSides = false
+} 
+								</code>
+							</pre>
+
+							<h4><b>Binary file</b></h4>
+							<p>The first byte is the bits for RenderState. Then I wrote the length of the first path (including a ‘\0’ in the ending). During run-time, program can get the length of first path and jump x bytes to get the second path. The paths I store are relative to $(GameInstallDir) so that we don’t need to cost some time to add the prefix “data/” during run-time. However the storage we need to store the path is larger than storing path relative to $(GameInstallDir)/data.</p>
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment9/1.png"><img src="../../../images/Program/GameEngine2/Assignment9/1.png" alt="" /></a></span>
+							</div>
+
+							<br>
+							<h4><b>Extract data</b></h4>
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment8/2.png"><img src="../../../images/Program/GameEngine2/Assignment8/2.png" alt="" /></a></span>
+							</div>
+
+							<br>
+							<h3><b>Controls</b></h3>
+							<p>Press <b>W/A/S/D</b> to move the jerry can. Hold Control and press <b>W/A/S/D</b> to move the plane. Press <b>Up/Down/Left/Right Arrow</b> to move camera.
+
+							<h3><b>Screen Shot</b></h3>
+							<div class = "row"> 
+								<div class = "6u 12u$(medium)">
+									<div style="color:black">
+									</div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/Assignment9/3.png"><img src="../../../images/Program/GameEngine2/Assignment9/3.png" alt="" /></a></span>
+								</div>
+							</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
