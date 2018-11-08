@@ -138,6 +138,15 @@ return
 
 							<h3><b>Challenges</b></h3>
 							<p>I’m thinking about how to dynamic create an object by data file. Since the framework shouldn’t know anything about the derived class made by developers, how to dynamic create those class? One way is that let developers change some source code to register the class, which is not a good choice for design and development. The other way I’m thinking is to make an object asset builder, which could read the registered class name from data file, then output a source code file to an object initializer project, then we can build this project correctly and create the class by name. The second way might take me a lot of time so I’ll do it at the end.</p>
+
+							<h3><b>Update (11/07)</b></h3>
+							<p>The framework of behavior tree is finished. I added some tasks and decorators to move game object and check their distance. The example behavior tree will make the sphere chasing jerry can if the distance between them is less than some value.</p>
+							<p>I plan to implement the data file for the behavior tree and create a structure for the communication of nodes in the behavior tree.</p>
+
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/4.gif"><img src="../../../images/Program/GameEngine2/BT_FSM/4.gif" alt="" /></a></span>
+							</div>
+
 					</div>
 				</div>
 			</section>
