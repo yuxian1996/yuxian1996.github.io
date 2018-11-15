@@ -24,6 +24,11 @@
 			margin-left: 10%;
 			margin-right: 10%
 		}
+
+		.function
+		{
+			color : blue
+		}
 	</style>
 	</head>
 	<body class="subpage">
@@ -146,7 +151,134 @@ return
 							<div class = "6u 12u$(medium)">
 								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/4.gif"><img src="../../../images/Program/GameEngine2/BT_FSM/4.gif" alt="" /></a></span>
 							</div>
+							<br>
 
+							<h3 id = "update2"><b>Update (11/14)</b></h3>
+							<p>During this week, I designed human-readable file for my behavior tree system, implemented the builder to read human-readable file and convert it to binary file, then load binary file into memory. </p>
+
+							<h4><b>Setup Behavior Tree</b></h4>
+							<ol>
+								<li>
+									Set Root
+									<p>A behavior tree has a unique root node which is the first node to be execute when it runs. To setup the root, use function <span class = "function">void SetRoot(BehaviorTreeNode* ipRoot)</span>. Root has to be the first node linked to the behavior tree. 
+</p>
+								</li>
+								<li>
+									Link Nodes
+									<ol style = "color:black">
+										<li>
+											Developers can use <span class="function"> void AddChild(BehaviorTreeNode* ipChild) </span>to link parent and child nodes BehaviorTreeNode_Composite. 
+										</li>
+										<li>
+											Developers can push all the nodes into one std::vector then use <span class="function"> void Link(std::vector&lt;BehaviorTreeNode*&gt;&amp; ipNodes, const std::vector&lt;std::pair&lt;uint16_t, uint16_t&gt;&gt;&amp; ipLinks) </span> to link all the nodes by their index.
+										</li>
+										<li>
+											It’s also possible to load links by file. Use <span class="function"> eae6320::cResult LoadLinks(std::vector&lt;BehaviorTreeNode*&gt;&amp; ipNodes, const char* const ipFilePath)</span> to link nodes by file path.<br>
+											Behavior tree data should be as below:
+											<pre class = "6u 12u$(medium)"><code>return
+{
+    Links =
+    {
+        {0, 1},
+        {0, 2},
+    },
+}</code></pre>
+										</li>
+									</ol>
+								</li>
+								<li>
+									Add decorate and service
+									<p>	Use <span class="function">  void AddDecorator(BehaviorTree_Decorator* ipDecorator)</span> and<span class="function"> void AddService(BehaviorTree_Service* ipService)</span> to add decorators and services to a node.</p>
+								</li>
+								<li>
+									Execute
+									<p>Use<span class="function"> void Execute()</span> in the update function to execute behavior tree each update.</p>
+								</li>
+							</ol>
+
+							<h4><b>Setup Behavior Tree</b></h4>
+							<p>Tasks, composites, decorators and services can be easily implemented by derived from the base class.
+							<ol >
+								<li>
+									Task
+									<p>
+										Derived from BehaviorTree_Task then override the function<span class="function"> void ExcuteTask()</span>
+									</p>
+								</li>
+								<li>
+									Composite
+									<p>Derived from BehaviorTreeNode_Composite then override the function <span class="function">bool Execute()</span></p>
+								</li>
+								<li>
+									Decorator
+									<p>
+										Derived from BehaviorTree_Decorator then override the function <span class="function">bool Check()</span>
+									</p>
+								</li>
+								<li>
+									Service
+									<p>Derived from BehaviorTree_Service then override the function <span class="function">void Run()</span></p>
+								</li>
+							</ol>
+						</p>
+							<h4><b>Blackboard</b></h4>
+							<p>
+								Since all the nodes, decorators and services need some way to communicate, I create a Blackboard class for them to get and set values by name and type. It has an enum class BlackboardSelector to specify what kind of type the variable is, which includes boolean, integer, float and vector for now. 
+							</p>
+
+							<h4><b>Blackboard Data</b></h4>
+							<p>The human-readable data file of blackboard data can be describes as below:</p>
+							<pre class = "6u 12u$(medium)"><code>return
+{
+	vector = 
+	{
+        "Name1",
+        “Name2”
+	},
+
+	bool = 
+	{
+    	“Name3”
+	},
+
+	float = 
+	{
+  	  “Name4”
+	},
+
+	int = 
+	{
+ 	  “Name5”
+	}
+}</code></pre>
+
+							<h4><b>Setup Blackboard</b></h4>
+							<ul style = "color:black">
+								<li>
+									Use constructor<span class="function"> Blackboard(std::vector&lt;std::pair&lt;BlackboardSelector, std::vector&lt;std::string&gt;&gt;&gt;&amp; selectors, uint16_t inMaxSize)</span>
+								</li>
+								<li>
+									Or Load from file use <span class="function"> eae6320::cResult Load(const char* ipPath, Blackboard*&amp; outBlackboard)</span>
+								</li>
+							</ul>
+
+							<h4><b>Use Blackboard</b></h4>
+							<ul style = "color:black">
+								<li>
+									Use <span class="function">T const GetValue(const char* const ipKey)</span> to get value by name
+								</li>
+								<li>
+									Use<span class="function">void SetValue(const char* const ipKey, const T inData)</span> to set value by name
+								</li>
+							</ul>
+							<p>
+								Note the value can only be bool, int, float and vector for now. It is not safe if the type of template passed in is not the same as the type of data it stores. The way to get and set value would be changed to make it safer in the next week.
+							</p>
+
+							<div class = "6u 12u$(medium)">
+								Sphere goes for jerry can if it finds target, otherwise wanders
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/5.gif"><img src="../../../images/Program/GameEngine2/BT_FSM/5.gif" alt="" /></a></span>
+							</div>
 					</div>
 				</div>
 			</section>
