@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+		.box.medium
+		{
+			margin-left: 10%;
+			margin-right: 10%
+		}
+
+		.function
+		{
+			color : blue
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Engine Feature: Behavior Tree</h2>
+						<p>This feature will have a framework for users to setup their data-driven behavior tree.</p>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box medium">
+						<div class="content" class="container">
+							<br>
+							<h3><b>Behavior Tree</b></h3>
+							<p>Behavior tree is composited by lots of nodes, each node has its logic. Some of the nodes (composites) determine which child it choose to be executed, some logic simply execute a task. Each node could have a condition (decorator) which controls program would execute this node. And each node could have a service which runs when this node is being executing.
+							</p>
+							<div class = "8u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/1.png"><img src="../../../images/Program/GameEngine2/BT_FSM/1.png" alt="" /></a></span>
+							</div>
+							<br>
+							<p>The basic idea of the framework is:
+
+							<div class = "8u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/2.png"><img src="../../../images/Program/GameEngine2/BT_FSM/2.png" alt="" /></a></span>
+							</div>
+							</p>
+
+							<p>Developers can create derived class from task, decorator or service to implement their own logic, then use public functions or user data file to link those logic together. The derived class could be reused easily through the data file. 
+Developer will be provided public functions to link nodes, add decorators and services to a node, run behavior tree. The data file should include the class name of nodes, name of nodes, links between two linked nodes.
+</p>
+
+							<h4><b>Data File Example</b></h4>
+							<pre class = "8u 12u$(medium)">
+								<code>
+return
+{
+    Nodes = 
+    {
+        {
+            ClassName = “SelectorClass”,
+            Name = “SelectorName”,
+            Decorators = 
+            {
+                “DecoratorClass1”,
+                “DecoratorClass2”
+            },
+            Services = 
+            {
+                “ServicesClass1”,
+                “ServicesClass2”
+            },
+        },
+        {
+            …
+        }
+        …
+    },
+    Links = 
+    {
+        {“NodeName1”, “NodeName2”},
+        {“NodeName3”, “NodeName4”},
+        …
+    }
+}
+
+								</code>
+							</pre>
+
+							<h3><b>State Machine</b></h3>
+							<p>State machine has some common features as behavior tree, like condition and node (state). It’s simpler than behavior tree since it can only be in one state at a time. I’m planning to make base class for state and condition, then let programmer add variables by data file, provide some public functions to change the value of each variables they’ve added to control the state machine. (This needs to be designed later)</p>
+								<div class = "6u 12u$(medium)">
+									<div style="color:black">
+									</div>
+									<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/3.png"><img src="../../../images/Program/GameEngine2/BT_FSM/3.png" alt="" /></a></span>
+								</div>
+
+							<h3><b>Challenges</b></h3>
+							<p>I’m thinking about how to dynamic create an object by data file. Since the framework shouldn’t know anything about the derived class made by developers, how to dynamic create those class? One way is that let developers change some source code to register the class, which is not a good choice for design and development. The other way I’m thinking is to make an object asset builder, which could read the registered class name from data file, then output a source code file to an object initializer project, then we can build this project correctly and create the class by name. The second way might take me a lot of time so I’ll do it at the end.</p>
+
+							<h3><b>Update (11/07)</b></h3>
+							<p>The framework of behavior tree is finished. I added some tasks and decorators to move game object and check their distance. The example behavior tree will make the sphere chasing jerry can if the distance between them is less than some value.</p>
+							<p>I plan to implement the data file for the behavior tree and create a structure for the communication of nodes in the behavior tree.</p>
+
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/4.gif"><img src="../../../images/Program/GameEngine2/BT_FSM/4.gif" alt="" /></a></span>
+							</div>
+							<br>
+
+							<h3 id = "update2"><b>Update (11/14)</b></h3>
+							<p>During this week, I designed human-readable file for my behavior tree system, implemented the builder to read human-readable file and convert it to binary file, then load binary file into memory. </p>
+
+							<h4><b>Setup Behavior Tree</b></h4>
+							<ol>
+								<li>
+									Set Root
+									<p>A behavior tree has a unique root node which is the first node to be execute when it runs. To setup the root, use function <span class = "function">void SetRoot(BehaviorTreeNode* ipRoot)</span>. Root has to be the first node linked to the behavior tree. 
+</p>
+								</li>
+								<li>
+									Link Nodes
+									<ol style = "color:black">
+										<li>
+											Developers can use <span class="function"> void AddChild(BehaviorTreeNode* ipChild) </span>to link parent and child nodes BehaviorTreeNode_Composite. 
+										</li>
+										<li>
+											Developers can push all the nodes into one std::vector then use <span class="function"> void Link(std::vector&lt;BehaviorTreeNode*&gt;&amp; ipNodes, const std::vector&lt;std::pair&lt;uint16_t, uint16_t&gt;&gt;&amp; ipLinks) </span> to link all the nodes by their index.
+										</li>
+										<li>
+											It’s also possible to load links by file. Use <span class="function"> eae6320::cResult LoadLinks(std::vector&lt;BehaviorTreeNode*&gt;&amp; ipNodes, const char* const ipFilePath)</span> to link nodes by file path.<br>
+											Behavior tree data should be as below:
+											<pre class = "6u 12u$(medium)"><code>return
+{
+    Links =
+    {
+        {0, 1},
+        {0, 2},
+    },
+}</code></pre>
+										</li>
+									</ol>
+								</li>
+								<li>
+									Add decorate and service
+									<p>	Use <span class="function">  void AddDecorator(BehaviorTree_Decorator* ipDecorator)</span> and<span class="function"> void AddService(BehaviorTree_Service* ipService)</span> to add decorators and services to a node.</p>
+								</li>
+								<li>
+									Execute
+									<p>Use<span class="function"> void Execute()</span> in the update function to execute behavior tree each update.</p>
+								</li>
+							</ol>
+
+							<h4><b>Setup Behavior Tree</b></h4>
+							<p>Tasks, composites, decorators and services can be easily implemented by derived from the base class.
+							<ol >
+								<li>
+									Task
+									<p>
+										Derived from BehaviorTree_Task then override the function<span class="function"> void ExcuteTask()</span>
+									</p>
+								</li>
+								<li>
+									Composite
+									<p>Derived from BehaviorTreeNode_Composite then override the function <span class="function">bool Execute()</span></p>
+								</li>
+								<li>
+									Decorator
+									<p>
+										Derived from BehaviorTree_Decorator then override the function <span class="function">bool Check()</span>
+									</p>
+								</li>
+								<li>
+									Service
+									<p>Derived from BehaviorTree_Service then override the function <span class="function">void Run()</span></p>
+								</li>
+							</ol>
+						</p>
+							<h4><b>Blackboard</b></h4>
+							<p>
+								Since all the nodes, decorators and services need some way to communicate, I create a Blackboard class for them to get and set values by name and type. It has an enum class BlackboardSelector to specify what kind of type the variable is, which includes boolean, integer, float and vector for now. 
+							</p>
+
+							<h4><b>Blackboard Data</b></h4>
+							<p>The human-readable data file of blackboard data can be describes as below:</p>
+							<pre class = "6u 12u$(medium)"><code>return
+{
+	vector = 
+	{
+        "Name1",
+        “Name2”
+	},
+
+	bool = 
+	{
+    	“Name3”
+	},
+
+	float = 
+	{
+  	  “Name4”
+	},
+
+	int = 
+	{
+ 	  “Name5”
+	}
+}</code></pre>
+
+							<h4><b>Setup Blackboard</b></h4>
+							<ul style = "color:black">
+								<li>
+									Use constructor<span class="function"> Blackboard(std::vector&lt;std::pair&lt;BlackboardSelector, std::vector&lt;std::string&gt;&gt;&gt;&amp; selectors, uint16_t inMaxSize)</span>
+								</li>
+								<li>
+									Or Load from file use <span class="function"> eae6320::cResult Load(const char* ipPath, Blackboard*&amp; outBlackboard)</span>
+								</li>
+							</ul>
+
+							<h4><b>Use Blackboard</b></h4>
+							<ul style = "color:black">
+								<li>
+									Use <span class="function">T const GetValue(const char* const ipKey)</span> to get value by name
+								</li>
+								<li>
+									Use<span class="function">void SetValue(const char* const ipKey, const T inData)</span> to set value by name
+								</li>
+							</ul>
+							<p>
+								Note the value can only be bool, int, float and vector for now. It is not safe if the type of template passed in is not the same as the type of data it stores. The way to get and set value would be changed to make it safer in the next week.
+							</p>
+
+							<div class = "6u 12u$(medium)">
+								Sphere goes for jerry can if it finds target, otherwise wanders
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/BT_FSM/5.gif"><img src="../../../images/Program/GameEngine2/BT_FSM/5.gif" alt="" /></a></span>
+							</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
