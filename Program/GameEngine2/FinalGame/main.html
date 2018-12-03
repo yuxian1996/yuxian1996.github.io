@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+		.box.medium
+		{
+			margin-left: 10%;
+			margin-right: 10%
+		}
+
+		.function
+		{
+			color : blue
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Final Game</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box medium">
+						<div class="content" class="container">
+							<br>
+							<h3><b>Game Description</b></h3>
+							<p>The game will have some cube meshes and different color shaders to present different units. Player can control a unit and move it around and jump. If the unit goes on top of another unit, the underneath unit disappears and plays a sound effect. If two units collide in air, both will bounce back. There would be AI to control other units. There would be background music.
+							</p>
+
+							<h3><b>Sub-systems</b></h3>
+							<p>I’ll use my behavior tree to control AI units. It defines the behaviors of a unit such as when and how to approach, to jump, or to flee. 
+							I would use the following systems:<br>
+							<a href="http://www.codenamepandey.com/audioengine">Audio System</a><br>
+							<a href="https://yzd0014.wixsite.com/dyt1205/blog/eae6320-3d-collision-response">Collision System</a>
+						</p>
+							<h3><b>Progress</b></h3>
+							<p>So far I’m able to add the audio system to my final game and play background music. The camera view is set to be 45 degrees top down. However I had some problems to integrate the collision system into my project. Since the project handles all the collision and physic simulation by itself, it doesn’t provide any interface to let use know if any object is colliding or will be collided with other object in this frame. I’m trying to extract the collision detection part from the project and send a collision event to my game. Or simply use sphere collision instead of cube if I can’t extract it successfully. </p>
+
+							<h3><b>Sreen shot</b></h3>
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/FinalGame/1.gif"><img src="../../../images/Program/GameEngine2/FinalGame/1.gif" alt="" /></a></span>
+							</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
