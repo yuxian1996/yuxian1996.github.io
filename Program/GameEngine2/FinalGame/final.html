@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Portfolio of Yuxian Deng</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<style>
+		code{
+			 background-color : #333333 !important;
+			 color : white
+		}
+		table
+		{
+			color : black
+		}
+		.box.medium
+		{
+			margin-left: 10%;
+			margin-right: 10%
+		}
+
+		.function
+		{
+			color : blue
+		}
+	</style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="../index.html">Portfolio <span>of Yuxian Deng</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="../index.html">Home</a></li>
+					<li>Games
+						<ul>
+							<li ><a href="../Games/Kudzu the Wild.html">Kudzu: the Wild</a></li>
+							<li ><a href="../Games/Growth.html">Growth</a></li>
+							<li ><a href="../Games/In the Dark.html">In the Dark</a></li>
+							<li ><a href="../Games/Cube.html">Cube</a></li>
+						</ul>
+					</li>
+					<li>Programs
+						<ul>
+							<li ><a href="../Program/prt.html"> Precomputed Radiance Transfer</a></li>
+							<li ><a href="../Program/srtp.html">3D indoor modeling based on rules</a></li>
+						</ul>
+					</li>
+					<li><a href=""> Art</a></li>
+					<li><a href="">Resume</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<h2> Game Engine2 - Final Game</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box medium">
+						<div class="content" class="container">
+							<a href="FinalGame.zip" class="button special">Download</a>
+							<br>
+							<br>
+							<h3><b>Game Description</b></h3>
+							<p>In this game, player controls one unit (with looped color) and other units (with static color) are controlled by AI. All the units have the same ability – dash. Dash increases the move speed of a unit, lasts for 2 seconds and has 5 seconds cooldown. During dash time, a unit changes its effect (red color) and can eat other unit which is not dashing. The unit eaten will respawn at another random position. There’s a boundary in the level which keeps unit from getting out of the scene.
+							</p>
+
+							<h3><b>Engine System</b></h3>
+
+							<h4><b>AI Controller</b></h4>
+							<p>AI has four different behaviors below which composites its behavior tree:
+								<ol>
+									<li>
+									Flee
+									<p>If the unit is not dashing and there’s other unit dashing around it, it would move to opposite direction from the dashing unit.</p>
+									</li>
+									<li>
+									Chase
+									<p>
+									If the unit can dash (last dashing was 5 or more seconds ago) and there’s other unit which is not dashing around it, it would dash and move toward the other unit.	
+									</p>
+									</li>
+									<li>
+									Wander
+									<p>
+									If the unit is not fleeing or chasing, it will choose a random direction every 5 seconds and move toward it.
+									</p>
+									</li>
+									<li>
+									Reach Boundary
+									<p>
+									If the unit collides with boundary, it will move align to boundary. 
+									</p>
+									</li>
+								</ol>
+							</p>
+
+							<h4><b>Behavior Tree Visualization</b></h4>
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/FinalGame/2.png"><img src="../../../images/Program/GameEngine2/FinalGame/2.png" alt="" /></a></span>
+							</div>
+							<p>
+								When I actually used my behavior tree to create the AI controller, I found every unit needs a behavior tree even though the behavior trees are same. It would use a lot of unnecessary memory to create the duplications of a same behavior tree. So I changed my interface to use the tree. In the past, user had to pass an object and blackboard to the constructor of behavior tree, which means a tree stores these values inside its instance and controls only one object. Now user needs to pass the object and blackboard to the execute function which is executed in update function so that user can pass different values to the same behavior tree.
+							</p>
+
+							<h4><b><a href="http://www.codenamepandey.com/audioengine">Audio System (By Shantanu Pandey)</a></b></h4>
+							<p>
+								There’s a background music. If unit is eaten, plays a bubble sfx. The interface of Audio System is pretty intuitive and easy to use. I’d like to suggest to add some comment to explain some parameters of the interface. For instance, there’s an interface <b>void SetVolume (float value) </b>that I have no idea what the range of value should be. It would be better if there’s a comment saying the range should be [0, 1]. 
+							</p>
+
+							<h3><b>Controls</b></h3>
+							<p>
+								<b>W/A/S/D</b> to move player unit. <br>
+								<b>SPACE</b> to dash.<br>
+								<b>ESCAPE</b> to exit game.
+							</p>
+
+							<h3><b>Game Record</b></h3>
+							<div class = "6u 12u$(medium)">
+								<span class="image fit"><a href="../../../images/Program/GameEngine2/FinalGame/2.gif"><img src="../../../images/Program/GameEngine2/FinalGame/2.gif" alt="" /></a></span>
+							</div>
+							<br>
+
+							<h3><b>Discussion </b></h3>
+							<p>
+								I’ve learned a lot in this class which I think are all important or at least helpful and heuristic to me. I learned how to write platform independent code and provide clear interface to other users, which is pretty important when we’re working in a big team. Human-readable file and the conversion from human-readable file to binary file are interested and helpful. Now I’m able to understand how data-driven design works and why it is helpful in game development. <br>
+								I was expecting a specific assignment to introduce the whole solution, because we’re not familiar with some of the project like concurrency. It would be awesome to have an overview of the solution and understand it systematically.
+
+							</p>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Yuxian Deng. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
